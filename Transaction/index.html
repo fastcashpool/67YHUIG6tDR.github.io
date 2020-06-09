@@ -177,23 +177,7 @@ function getVariableData() {
         $('.pool7_current_address').html("<a href=https://etherscan.io/address/" + result + " target=_blank>" + result + "</a>");
     });
 
-    myContractInstance.methods.pool8currUserID().call().then(function (result) {
-       
-            $('.Pool8count').html(result);
-        $('.pool8_current_address').html("<a href=https://etherscan.io/address/" + result + " target=_blank>" + result + "</a>");
-    });
-
-    myContractInstance.methods.pool9currUserID().call().then(function (result) {
-       
-            $('.Pool9count').html(result);
-        $('.pool9_current_address').html("<a href=https://etherscan.io/address/" + result + " target=_blank>" + result + "</a>");
-    });
-
-    myContractInstance.methods.pool10currUserID().call().then(function (result) {
-        
-            $('.Pool10count').html(result);
-        $('.pool10_current_address').html("<a href=https://etherscan.io/address/" + result + " target=_blank>" + result + "</a>");
-    });
+   
 
 
 
@@ -288,16 +272,14 @@ function getReferralCommission() {
 
 
 function getPoolPaymentReceived() {
-    var pool1_price = 0.1;
-    var pool2_price = 0.2;
-    var pool3_price = 0.5;
-    var pool4_price = 1;
-    var pool5_price = 2;
-    var pool6_price = 5;
-    var pool7_price = 10;
-    var pool8_price = 20;
-    var pool9_price = 50;
-    var pool10_price = 100;
+    var pool1_price = 0.05;
+    var pool2_price = 0.1;
+    var pool3_price = 0.2;
+    var pool4_price = 0.5;
+    var pool5_price = 1;
+    var pool6_price = 2;
+    var pool7_price = 5;
+   
 
     var referraltotal = parseFloat(0);
 
@@ -328,16 +310,7 @@ function getPoolPaymentReceived() {
                 else if (level == 7) {
                     referraltotal = parseFloat(referraltotal) + pool7_price;
                 }
-                else if (level == 8) {
-                    referraltotal = parseFloat(referraltotal) + pool8_price;
-                }
-                else if (level == 9) {
-                    referraltotal = parseFloat(referraltotal) + pool9_price;
-                }
-                else if (level == 10) {
-                    referraltotal = parseFloat(referraltotal) + pool10_price;
-                }
-
+               
 
                 $('.totalpoolpayment').html(Math.round(1000000 * (referraltotal)) / 1000000);
             });
@@ -486,20 +459,17 @@ function Transaction_Register() {
 
 function Transaction_Pool() {
     var events = myContractInstance.getPastEvents('getPoolPayment', {filter:{ _receiver: account },  'fromBlock': 0, 'toBlock': 'latest' }, function (error, log) {
-        var pool1_price = 0.1;
-        var pool2_price = 0.2;
-        var pool3_price = 0.5;
-        var pool4_price = 1;
-        var pool5_price = 2;
-        var pool6_price = 5;
-        var pool7_price = 10;
-        var pool8_price = 20;
-        var pool9_price = 50;
-        var pool10_price = 100;
+         var pool1_price = 0.05;
+    var pool2_price = 0.1;
+    var pool3_price = 0.2;
+    var pool4_price = 0.5;
+    var pool5_price = 1;
+    var pool6_price = 2;
+    var pool7_price = 5;
 
         if (!error) {
             $.each(log, function (key, value) {
-                $('.transaction_autopool').append('<tr><td><a href="https://etherscan.io/tx/' + value.transactionHash + '" target="_blank">' + value.transactionHash + '</a></td><td style=color:green>' + value.returnValues._user + '</td><td>' + value.returnValues._level + '</td><td>' + (value.returnValues._level == 1 ? pool1_price : value.returnValues._level == 2 ? pool2_price : value.returnValues._level == 3 ? pool3_price : value.returnValues._level == 4 ? pool4_price : value.returnValues._level == 5 ? pool5_price : value.returnValues._level == 6 ? pool6_price : value.returnValues._level == 7 ? pool7_price : value.returnValues._level == 8 ? pool8_price : value.returnValues._level == 9 ? pool9_price : pool10_price) + ' ETH</td></tr>');
+                $('.transaction_autopool').append('<tr><td><a href="https://etherscan.io/tx/' + value.transactionHash + '" target="_blank">' + value.transactionHash + '</a></td><td style=color:green>' + value.returnValues._user + '</td><td>' + value.returnValues._level + '</td><td>' + (value.returnValues._level == 1 ? pool1_price : value.returnValues._level == 2 ? pool2_price : value.returnValues._level == 3 ? pool3_price : value.returnValues._level == 4 ? pool4_price : value.returnValues._level == 5 ? pool5_price : value.returnValues._level == 6 ? pool6_price : pool7_price) + ' ETH</td></tr>');
             });
         }
     });
