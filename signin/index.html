@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>FASTBULL V1 Login</title>
+    <title>FASTCASHPOOL Login</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/x-icon href="https://1dapp.github.io/signup/assets/img/bullrun4.png">
@@ -195,7 +195,7 @@ $(document).ready(function () {
             myContractInstance.methods.users(account).call().then(function (result) {
                 if (result[0]) {
                     localStorage.setItem("address", account);
-                    location.href = "https://fastbullv1.github.io/Home-Dashboard";
+                    location.href = "https://fastcashpool.github.io/Home-Dashboard";
                 }
                 else {
                     $('.error').html('You need to register first');
@@ -224,7 +224,7 @@ $(document).ready(function () {
                 if (result1.status == "0x1") {
                     alert("success")
                     localStorage.setItem("address", account);
-                    location.href = "https://fastbullv1.github.io/Home-Dashboard";
+                    location.href = "https://fastcashpool.github.io/Home-Dashboard";
                 }
                 else {
                     $('.error').html('Transaction Failed');
@@ -294,7 +294,7 @@ $(document).ready(function () {
                     if (receipt.status) {
                         alert("success")
                         localStorage.setItem("address", account);
-                        location.href = "https://fastbullv1.github.io/Home-Dashboard";
+                        location.href = "https://fastcashpool.github.io/Home-Dashboard";
                     }
                     else {
                         $('.error').html('Transaction Failed');
@@ -319,7 +319,7 @@ $(document).ready(function () {
                        
 
                             localStorage.setItem("address", add);
-                            location.href = "https://fastbullv1.github.io/Home-Dashboard";
+                            location.href = "https://fastcashpool.github.io/Home-Dashboard";
                         }
                         else {
                             $('.error').html('You need to register first');
@@ -374,7 +374,7 @@ $(document).ready(function () {
                 <div class="login100-form">
                     <form class="w-100 validate-form" onsubmit="return false" id="signinform">
                         <span class="login100-form-title p-b-10 text-white">
-                            FASTBULL V1 Login
+                            FASTCASHPOOL Login
                         </span>
                         <div class="w-100">
                             <img src="wallet.png" class="w-100 p-b-34" />
@@ -420,7 +420,7 @@ $(document).ready(function () {
                 </div> 
                 <div class="login100-more ">
                     <div class="col-lg-12 m-t-30">
-                                                 <a href=""> <h1 style="color:black; text-align: center;"> FASTBULL V1 </h1></a>
+                                                 <a href=""> <img src="https://res.cloudinary.com/forceex/image/upload/v1591704032/ed7b67f7-03a2-4892-964b-fc8a47717a76_agmlu4.jpg" alt="" ></a>
                     </div>
                     <div class="w-100 m-t-100 m-l-auto m-r-auto text-center download-buttons">
                         <a href="https://metamask.io/" target="_blank" class="m-b-5 btn btn-success" style="background-color:#062d54;border-color:#062d54">Download Metamask</a>
