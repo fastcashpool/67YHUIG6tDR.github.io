@@ -230,30 +230,8 @@ function loaddata(poolno) {
                            
                         });
                     }
-                    else if (poolno == 8) {
-                        myContractInstance.methods.pool8users(value.returnValues._user).call().then(function (result1) {
-                           
-                                $('.' + value.returnValues._user + ' td:nth-child(3)').html(result1.id);
-                                $('.' + value.returnValues._user + ' td:nth-child(4)').html(result1.payment_received);
-                          
-                        });
-                    }
-                    else if (poolno == 9) {
-                        myContractInstance.methods.pool9users(value.returnValues._user).call().then(function (result1) {
-                         
-                                $('.' + value.returnValues._user + ' td:nth-child(3)').html(result1.id);
-                                $('.' + value.returnValues._user + ' td:nth-child(4)').html(result1.payment_received);
-                          
-                        });
-                    }
-                    else if (poolno == 10) {
-                        myContractInstance.methods.pool10users(value.returnValues._user).call().then(function (result1) {
-                          
-                                $('.' + value.returnValues._user + ' td:nth-child(3)').html(result1.id);
-                                $('.' + value.returnValues._user + ' td:nth-child(4)').html(result1.payment_received);
-                          
-                        });
-                    }
+                   
+                    
                     myContractInstance.methods.users(value.returnValues._user).call().then(function (result1) {
                         
                         $('.' + value.returnValues._user + ' td:nth-child(5)').html(result1.id);
