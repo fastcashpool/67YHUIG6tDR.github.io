@@ -18,7 +18,7 @@
 
 
     <!-- Title -->
-    <title>FASTBULL V1</title>
+    <title>FASTCASHPOOL</title>
 
     <!-- Bootstrap css -->
     <link href="https://bullrun.live/Content/assets/plugins/bootstrap-4.1.3/css/bootstrap.min.css" rel="stylesheet" />
@@ -196,23 +196,7 @@ $(document).ready(function () {
         $('.pool7_current_address').html("<a href=https://etherscan.io/address/" + result + " target=_blank>" + result + "</a>");
     });
 
-    myContractInstance.methods.pool8currUserID().call().then(function (result) {
-
-        $('.Pool8count').html(result);
-        $('.pool8_current_address').html("<a href=https://etherscan.io/address/" + result + " target=_blank>" + result + "</a>");
-    });
-
-    myContractInstance.methods.pool9currUserID().call().then(function (result) {
-
-        $('.Pool9count').html(result);
-        $('.pool9_current_address').html("<a href=https://etherscan.io/address/" + result + " target=_blank>" + result + "</a>");
-    });
-
-    myContractInstance.methods.pool10currUserID().call().then(function (result) {
-
-        $('.Pool10count').html(result);
-        $('.pool10_current_address').html("<a href=https://etherscan.io/address/" + result + " target=_blank>" + result + "</a>");
-    });
+   
 
 
 
@@ -266,24 +250,7 @@ $(document).ready(function () {
         });
     });
 
-    myContractInstance.methods.pool8activeUserID().call().then(function (result) {
-        myContractInstance.methods.pool8userList(result).call().then(function (result1) {
-            $('.pool8_current_address').html("<a href=https://etherscan.io/address/" + result1 + " target=_blank>" + result1 + "</a>");
-        });
-    });
-
-    myContractInstance.methods.pool9activeUserID().call().then(function (result) {
-        myContractInstance.methods.pool9userList(result).call().then(function (result1) {
-            $('.pool9_current_address').html("<a href=https://etherscan.io/address/" + result1 + " target=_blank>" + result1 + "</a>");
-        });
-    });
-
-    myContractInstance.methods.pool10activeUserID().call().then(function (result) {
-        myContractInstance.methods.pool10userList(result).call().then(function (result1) {
-            $('.pool10_current_address').html("<a href=https://etherscan.io/address/" + result1 + " target=_blank>" + result1 + "</a>");
-        });
-    });
-    
+ 
   
 
 });
@@ -399,37 +366,8 @@ $(document).ready(function () {
                                             <td><span class="pool7_current_address"></span></td>
                                             <td><a href="https://fastbullv1.github.io/poolno7">View in details</a></td>
                                         </tr>
-                                        <tr>
-                                            <td><img src="https://bullrun.live/Content/assets/img/8.png" class="w-6" alt=""></td>
-                                            <td><span class="Pool8count"></span></td>
-                                            <td><img src="https://bullrun.live/Content/assets/images/crypto-currencies/square-color/Ethereum.svg" class="w-5" alt=""> 20 ETH</td>
-                                            <td>
-                                                <span class="badge  badge-info"> 3 X 20 </span> = <span class="badge  badge-success"> 60 ETH </span>
-                                            </td>
-
-                                            <td><span class="pool8_current_address"></span></td>
-                                            <td><a href="https://fastbullv1.github.io/poolno8">View in details</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td><img src="https://bullrun.live/Content/assets/img/9.png" class="w-6" alt=""></td>
-                                            <td><span class="Pool9count"></span></td>
-                                            <td><img src="https://bullrun.live/Content/assets/images/crypto-currencies/square-color/Ethereum.svg" class="w-5" alt=""> 50 ETH</td>
-                                            <td>
-                                                <span class="badge  badge-info"> 3 X 50 </span> = <span class="badge  badge-success"> 150 ETH </span>
-                                            </td>
-                                            <td><span class="pool9_current_address"></span></td>
-                                            <td><a href="https://fastbullv1.github.io/poolno9">View in details</a></td>
-                                        </tr>
-                                        <tr>
-                                            <td><img src="https://bullrun.live/Content/assets/img/10.png" class="w-6" alt=""></td>
-                                            <td><span class="Pool10count"></span></td>
-                                            <td><img src="https://bullrun.live/Content/assets/images/crypto-currencies/square-color/Ethereum.svg" class="w-5" alt=""> 100 ETH</td>
-                                            <td>
-                                                <span class="badge  badge-info"> 3 X 100 </span> = <span class="badge  badge-success"> 300 ETH </span>
-                                            </td>
-                                            <td><span class="pool10_current_address"></span></td>
-                                            <td><a href="https://fastbullv1.github.io/poolno10">View in details</a></td>
-                                        </tr>
+                                        
+                                        
                                     </tbody>
                                 </table>
                             </div>
