@@ -2,14 +2,14 @@
 <!doctype html>
 <html lang="en" dir="ltr">
 <head>
-    <script>
+   <!-- <script>
         var account = localStorage.getItem("address");
 
         if (account == null) {
             alert("You are not Logged In. Please Login first..!!");
             location.href = "https://fastcashpool.github.io";
         }
-    </script>
+    </script> -->
     <!-- Meta data -->
     <meta charset="UTF-8">
 
@@ -19,7 +19,7 @@
 
 
     <!-- Title -->
-    <title>FASTCASHPOOL</title>
+    <title>ULTIMATE 7</title>
 
     <!-- Bootstrap css -->
     <link href="https://bullrun.live/Content/assets/plugins/bootstrap-4.1.3/css/bootstrap.min.css" rel="stylesheet" />
@@ -79,9 +79,10 @@
 <body class="app">
 
     <!-- Loader -->
+    <!--
     <div id="loading">
         <img src="https://bullrun.live/Content/assets/images/other/loader.svg" class="loader-img" alt="Loader">
-    </div>
+    </div> -->
 
     <!-- PAGE -->
     <div class="page">
@@ -92,8 +93,8 @@
                 <div class="app-header header top-header navbar-collapse ">
                     <div class="container-fluid">
                         <div class="d-flex">
-                            <a class="header-brand" href="https://fastcashpool.github.io/Home-Dashboard">
-                                <h3 style="margin-top: 16px;color: #141670;">FASTCASHPOOL</h3>
+                            <a class="header-brand" href="https://ultimateseven.github.io/Home-Dashboard">
+                                <h3 style="margin-top: 16px;color: #141670;">HAVANA 7</h3>
                                 
                                
                             </a>
@@ -111,11 +112,11 @@
                         <div class="line-animations">
                             <ul class="resp-tabs-list hor_1">
                                 
-                                 <li class="resp-tab-active active"><a href="https://fastcashpool.github.io/Home-Dashboard"><span class="side-menu__icon"></span><img src="https://bullrun.live/Content/assets/img/homepage.png" class="side_menu_img svg-1" alt="image" data-toggle="tooltip"  data-original-title="Home"></a></li>
-                                <li class="autopool"><a href="https://fastcashpool.github.io/Autopool"><span class="side-menu__icon"></span><img src="https://bullrun.live/Content/assets/img/m2.png" class="side_menu_img svg-1" alt="image" data-toggle="tooltip"  data-original-title="Autopool"></a></li>
-                                <li class="trans"><a href="https://fastcashpool.github.io/Transaction"><span class="side-menu__icon"></span><img src="https://bullrun.live/Content/assets/img/m3.png" class="side_menu_img svg-1" alt="image" data-toggle="tooltip"  data-original-title="Transations"></a></li>
-                                <li class="team2"><a href="https://fastcashpool.github.io/Team"><span class="side-menu__icon"></span><img src="https://bullrun.live/Content/assets/img/m4.png" class="side_menu_img svg-1" alt="image" data-toggle="tooltip"  data-original-title="Team"></a></li>
-                                <li class="media2"><a href="https://fastcashpool.github.io/Media"><span class="side-menu__icon"></span><img src="https://bullrun.live/Content/assets/img/m5.png" class="side_menu_img svg-1" alt="image" data-toggle="tooltip"  data-original-title="Media"></a></li>
+                                 <li class="resp-tab-active active"><a href="https://ultimateseven.github.io/Home-Dashboard"><span class="side-menu__icon"></span><img src="https://bullrun.live/Content/assets/img/homepage.png" class="side_menu_img svg-1" alt="image" data-toggle="tooltip"  data-original-title="Home"></a></li>
+                                <li class="autopool"><a href="https://ultimateseven.github.io/Autopool"><span class="side-menu__icon"></span><img src="https://bullrun.live/Content/assets/img/m2.png" class="side_menu_img svg-1" alt="image" data-toggle="tooltip"  data-original-title="Autopool"></a></li>
+                                <li class="trans"><a href="https://ultimateseven.github.io/Transaction"><span class="side-menu__icon"></span><img src="https://bullrun.live/Content/assets/img/m3.png" class="side_menu_img svg-1" alt="image" data-toggle="tooltip"  data-original-title="Transations"></a></li>
+                                <li class="team2"><a href="https://ultimateseven.github.io/Team"><span class="side-menu__icon"></span><img src="https://bullrun.live/Content/assets/img/m4.png" class="side_menu_img svg-1" alt="image" data-toggle="tooltip"  data-original-title="Team"></a></li>
+                                <li class="media2"><a href="https://ultimateseven.github.io/Media"><span class="side-menu__icon"></span><img src="https://bullrun.live/Content/assets/img/m5.png" class="side_menu_img svg-1" alt="image" data-toggle="tooltip"  data-original-title="Media"></a></li>
                              
                                 <li class="logoutuser"><span class="side-menu__icon"></span><img src="https://bullrun.live/Content/assets/img/m6.png" class="side_menu_img svg-1" alt="image" data-toggle="tooltip"  data-original-title="Log out"></li>
                           
@@ -190,19 +191,19 @@ function getVariableData() {
 
     myContractInstance.methods.users(account).call().then(function (result1) {
         
-            $('.currentuseridlink').html("https://fastcashpool.github.io/signup/?referralid=" + result1.id);
+            $('.currentuseridlink').html("https://ultimate7.run/signup/?referralid=" + result1.id);
 
-            $('.currentuseridlinknew').html("https://link.trustwallet.com/open_url?coin_id=60&url=https://fastcashpool.github.iosignup/?referralid=" + result1.id);
-
-
-
-            $('.currentuseridlink').val("https://fastcashpool.github.io/signup/?referralid=" + result1.id);
-
-            $('.currentuseridlinknew').val("https://link.trustwallet.com/open_url?coin_id=60&url=https://fastcashpool.github.io/signup/?referralid=" + result1.id);
+            $('.currentuseridlinknew').html("https://link.trustwallet.com/open_url?coin_id=60&url=https://ultimate7.run/signup/?referralid=" + result1.id);
 
 
 
-            $('.sharebutton').attr('data-url', "https://fastcashpool.github.io/signup/?referralid=" + result1.id);
+            $('.currentuseridlink').val("https://ultimate7.run/signup/?referralid=" + result1.id);
+
+            $('.currentuseridlinknew').val("https://link.trustwallet.com/open_url?coin_id=60&url=https://ultimate7.run/signup/?referralid=" + result1.id);
+
+
+
+            $('.sharebutton').attr('data-url', "https://ultimate7.run/signup/?referralid=" + result1.id);
             $('.currentuserid').html(result1.id);
             $('.currentaddress').html(account);
             $('.ethaddress').attr('href', 'https://etherscan.io/address/' + account);
@@ -514,8 +515,8 @@ window.addEventListener('load', function () {
 </script>
 
         
-        <div class="app-content">
-    <div class="section">
+        <div class="app-content bg-light text-primary">
+    <div class="section bg-light text-primary">
       
 
 
@@ -523,30 +524,30 @@ window.addEventListener('load', function () {
         <!-- row opened -->
         <div class="row">
             <div class="col-md-12">
-                <div class="card overflow-hidden">
+                <div class="card overflow-hidden bg-light">
                     <div class="card-header">
-                        <h3 class="card-title">Transaction</h3>
+                        <h3 class="card-title text-primary">Transaction</h3>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body bg-light text-primary">
                         <div class="">
                             <div class="panel panel-primary">
                                 <div class=" tab-menu-heading">
                                     <div class="tabs-menu1 ">
                                         <!-- Tabs -->
                                         <ul class="nav panel-tabs">
-                                            <li class=""><a href="#tab5" class="active" data-toggle="tab">Referral</a></li>
-                                            <li><a href="#tab6" data-toggle="tab">Pool Payments</a></li>
+                                            <li class=""><a href="#tab5" class="active text-primary" data-toggle="tab">Referral</a></li>
+                                            <li><a href="#tab6" class = "text-primary" data-toggle="tab">Pool Payments</a></li>
 
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="panel-body tabs-menu-body">
-                                    <div class="tab-content">
+                                <div class="panel-body tabs-menu-body bg-light text-primary">
+                                    <div class="tab-content bg-light text-primary">
                                         <div class="tab-pane active " id="tab5">
                                             <div class="">
                                                 <div class="table-responsive">
                                                     <table class="table card-table table-striped text-nowrap table-bordered">
-                                                        <thead class="border-top">
+                                                        <thead class="border-top text-primary">
                                                             <tr>
                                                                 <th>TransactionHash</th>
                                                                 <th>From address </th>
@@ -566,7 +567,7 @@ window.addEventListener('load', function () {
                                             <div class="">
                                                 <div class="table-responsive">
                                                     <table class="table card-table table-striped text-nowrap table-bordered">
-                                                        <thead class="border-top">
+                                                        <thead class="border-top text-primary bg-light">
                                                             <tr>
                                                                 <th>TransactionHash</th>
                                                                 <th>From address </th>
@@ -606,12 +607,12 @@ window.addEventListener('load', function () {
 </script>
 
         <!-- Footer opened -->
-        <footer class="footer-main leftmenu-footer">
+        <footer class="footer-main leftmenu-footer bg-light text-primary">
             <div class="container">
                 <div class="row">
                     <div class="col-md-6  mt-2 mb-2 p-l-10">
-                        <span class="p-r-10">Contract address</span>
-                        <a href="https://etherscan.io/address/0xee8c238ee20c574586c14af777764bd722d7f222" class="text-success" target="_blank">
+                        <span class="p-r-10 text-primary">Contract address</span>
+                        <a href="https://etherscan.io/address/0xee8c238ee20c574586c14af777764bd722d7f222" class="text-primary" target="_blank">
                             0xee8c238ee20c574586c14af777764bd722d7f222 <i class="fa fa-external-link"></i>
                         </a>
                     </div>
@@ -696,7 +697,7 @@ window.addEventListener('load', function () {
         $('.logoutuser').click(function () {
         
             var account = localStorage.removeItem("address", null);
-            location.href = "https://fastcashpool.github.io/signin";
+            location.href = "https://ultimateseven.github.io/signin";
         });
     });
     </script>
