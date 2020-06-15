@@ -313,16 +313,14 @@ function getReferralCommission() {
 
 
 function getPoolPaymentReceived() {
-    var pool1_price = 0.1;
-    var pool2_price = 0.2;
-    var pool3_price = 0.5;
-    var pool4_price = 1;
-    var pool5_price = 2;
-    var pool6_price = 5;
-    var pool7_price = 10;
-    var pool8_price = 20;
-    var pool9_price = 50;
-    var pool10_price = 100;
+    var pool1_price = 0.05;
+    var pool2_price = 0.1;
+    var pool3_price = 0.2;
+    var pool4_price = 0.5;
+    var pool5_price = 1;
+    var pool6_price = 2;
+    var pool7_price = 5;
+   
 
     var referraltotal = parseFloat(0);
 
@@ -503,17 +501,14 @@ function Transaction_Register() {
 
 function Transaction_Pool() {
     var events = myContractInstance.getPastEvents('getPoolPayment', {filter:{ _receiver: account },  'fromBlock': 0, 'toBlock': 'latest' }, function (error, log) {
-        var pool1_price = 0.1;
-        var pool2_price = 0.2;
-        var pool3_price = 0.5;
-        var pool4_price = 1;
-        var pool5_price = 2;
-        var pool6_price = 5;
-        var pool7_price = 10;
-        var pool8_price = 20;
-        var pool9_price = 50;
-        var pool10_price = 100;
-
+       var pool1_price = 0.05;
+    var pool2_price = 0.1;
+    var pool3_price = 0.2;
+    var pool4_price = 0.5;
+    var pool5_price = 1;
+    var pool6_price = 2;
+    var pool7_price = 5;
+      
         if (!error) {
             $.each(log, function (key, value) {
                 $('.transaction_autopool').append('<tr><td><a href="https://etherscan.io/tx/' + value.transactionHash + '" target="_blank">' + value.transactionHash + '</a></td><td style=color:green>' + value.returnValues._user + '</td><td>' + value.returnValues._level + '</td><td>' + (value.returnValues._level == 1 ? pool1_price : value.returnValues._level == 2 ? pool2_price : value.returnValues._level == 3 ? pool3_price : value.returnValues._level == 4 ? pool4_price : value.returnValues._level == 5 ? pool5_price : value.returnValues._level == 6 ? pool6_price : pool7_price) + ' ETH</td></tr>');
@@ -590,9 +585,7 @@ function checkbuyLevel() {
                 checkPool5();
                 checkPool6();
                 checkPool7();
-                checkPool8();
-                checkPool9();
-                checkPool10();
+                
             }
        
 
@@ -805,97 +798,16 @@ function checkPool7() {
 
 }
 
-function checkPool8() {
-    myContractInstance.methods.pool8users(account).call().then(function ( result) {
-       
-            if (!result[0]) {
-                $('.pool8pay').show();
-                $('.pool8transaction').hide();
-            }
-            else if (result[2] == 3) {
-                $('.pool8status').show();
-                $('.pool8status .card-status').addClass('bg-success');
-                $('.pool8status .ribbon').addClass('text-success').html('<span class="bg-success">Completed</span>');
-                $('.pool8transaction').html('Received No. of Payments ' + result[2]);
-
-
-            }
-            else if (result[2] < 3) {
-                $('.pool8status').show();
-                $('.pool8status .card-status').addClass('bg-warning');
-                $('.pool8status .ribbon').addClass('text-warning').html('<span class="bg-warning">Active</span>');
-                $('.pool8transaction').html('Received No. of Payments ' + result[2]); $('.currentautopoolno').html(8);
-            }
-
 
        
 
-    });
 
-}
-
-function checkPool9() {
-    myContractInstance.methods.pool9users(account).call().then(function ( result) {
-       
-            if (!result[0]) {
-                $('.pool9pay').show();
-                $('.pool9transaction').hide();
-            }
-            else if (result[2] == 3) {
-                $('.pool9status').show();
-                $('.pool9status .card-status').addClass('bg-success');
-                $('.pool9status .ribbon').addClass('text-success').html('<span class="bg-success">Completed</span>');
-                $('.pool9transaction').html('Received No. of Payments ' + result[2]);
-
-
-            }
-            else if (result[2] < 3) {
-                $('.pool9status').show();
-                $('.pool9status .card-status').addClass('bg-warning');
-                $('.pool9status .ribbon').addClass('text-warning').html('<span class="bg-warning">Active</span>');
-                $('.pool9transaction').html('Received No. of Payments ' + result[2]); $('.currentautopoolno').html(9);
-            }
-
-
-        
-
-    });
-
-}
-
-function checkPool10() {
-    myContractInstance.methods.pool10users(account).call().then(function (result) {
-       
-            if (!result[0]) {
-                $('.pool10pay').show();
-                $('.pool10transaction').hide();
-            }
-            else if (result[2] == 3) {
-                $('.pool10status').show();
-                $('.pool10status .card-status').addClass('bg-success');
-                $('.pool10status .ribbon').addClass('text-success').html('<span class="bg-success">Completed</span>');
-                $('.pool10transaction').html('Received No. of Payments ' + result[2]);
-                $('.currentautopoolno').html(10);
-            }
-            else if (result[2] < 3) {
-                $('.pool10status').show();
-                $('.pool10status .card-status').addClass('bg-warning');
-                $('.pool10status .ribbon').addClass('text-warning').html('<span class="bg-warning">Active</span>');
-                $('.pool10transaction').html('Received No. of Payments ' + result[2]); $('.currentautopoolno').html(10);
-            }
-
-
-       
-
-    });
-
-}
 $(document).ready(function () {
     $('.pool1pay').click(function () {
         try {
 
             ethereum.enable();
-            myContractInstance1.methods.buyPool1().send({ from: account, value: 100000000000000000, gas: 500000 })
+            myContractInstance1.methods.buyPool1().send({ from: account, value: 50000000000000000, gas: 500000 })
                 .on('transactionHash', function (hash) {
                 
                     $('.pool1pay').hide();
@@ -915,7 +827,7 @@ $(document).ready(function () {
             ethereum.enable();
           
 
-            myContractInstance1.methods.buyPool2().send({ from: account, value: 200000000000000000, gas: 500000 })
+            myContractInstance1.methods.buyPool2().send({ from: account, value: 100000000000000000, gas: 500000 })
                 .on('transactionHash', function (hash) {
 
                     $('.pool2pay').hide();
@@ -933,7 +845,7 @@ $(document).ready(function () {
         try {
             ethereum.enable();
 
-            myContractInstance1.methods.buyPool3().send({ from: account, value: 500000000000000000, gas: 500000 })
+            myContractInstance1.methods.buyPool3().send({ from: account, value: 200000000000000000, gas: 500000 })
                 .on('transactionHash', function (hash) {
 
                     $('.pool3pay').hide();
@@ -951,7 +863,7 @@ $(document).ready(function () {
         try {
             ethereum.enable();
             
-            myContractInstance1.methods.buyPool4().send({ from: account, value: 1000000000000000000, gas: 500000 })
+            myContractInstance1.methods.buyPool4().send({ from: account, value: 500000000000000000, gas: 500000 })
                 .on('transactionHash', function (hash) {
 
                     $('.pool4pay').hide();
@@ -969,7 +881,7 @@ $(document).ready(function () {
         try {
             ethereum.enable();           
 
-            myContractInstance1.methods.buyPool5().send({ from: account, value: 2000000000000000000, gas: 500000 })
+            myContractInstance1.methods.buyPool5().send({ from: account, value: 1000000000000000000, gas: 500000 })
                 .on('transactionHash', function (hash) {
 
                     $('.pool5pay').hide();
@@ -988,7 +900,7 @@ $(document).ready(function () {
         try {
             ethereum.enable();
 
-            myContractInstance1.methods.buyPool6().send({ from: account, value: 5000000000000000000, gas: 500000 })
+            myContractInstance1.methods.buyPool6().send({ from: account, value: 2000000000000000000, gas: 500000 })
                 .on('transactionHash', function (hash) {
 
                     $('.pool6pay').hide();
@@ -1007,7 +919,7 @@ $(document).ready(function () {
         try {
             ethereum.enable();
 
-            myContractInstance1.methods.buyPool7().send({ from: account, value: 10000000000000000000, gas: 500000 })
+            myContractInstance1.methods.buyPool7().send({ from: account, value: 5000000000000000000, gas: 500000 })
                 .on('transactionHash', function (hash) {
 
                     $('.pool7pay').hide();
@@ -1024,62 +936,7 @@ $(document).ready(function () {
     });
 
 
-    $('.pool8pay').click(function () {
-        try {
-            ethereum.enable();
-
-            myContractInstance1.methods.buyPool8().send({ from: account, value: 20000000000000000000, gas: 500000 })
-                .on('transactionHash', function (hash) {
-
-                    $('.pool8pay').hide();
-                    $('.pool8transaction').show();
-                    $('.pool8transaction').html('<a href="https://etherscan.io/tx/' + hash + '">Track</a>');
-
-                });
-
-        }
-        catch (err) {
-            alert('Please download and install Metamask and Login to account');
-        }
-    });
-
-
-    $('.pool9pay').click(function () {
-        try {
-            ethereum.enable();
-            
-            myContractInstance1.methods.buyPool9().send({ from: account, value: 50000000000000000000, gas: 500000 })
-                .on('transactionHash', function (hash) {
-
-                    $('.pool9pay').hide();
-                    $('.pool9transaction').show();
-                    $('.pool9transaction').html('<a href="https://etherscan.io/tx/' + hash + '">Track</a>');
-
-                });
-        }
-        catch (err) {
-            alert('Please download and install Metamask and Loggin to account');
-        }
-    });
-
-
-    $('.pool10pay').click(function () {
-        try {
-            ethereum.enable();
-           
-            myContractInstance1.methods.buyPool10().send({ from: account, value: 100000000000000000000, gas: 500000 })
-                .on('transactionHash', function (hash) {
-
-                    $('.pool10pay').hide();
-                    $('.pool10transaction').show();
-                    $('.pool10transaction').html('<a href="https://etherscan.io/tx/' + hash + '">Track</a>');
-
-                });
-        }
-        catch (err) {
-            alert('Please download and install Metamask and Loggin to account');
-        }
-    });
+   
 
 
 });
@@ -1143,29 +1000,30 @@ $(document).ready(function () {
 
 
 
-<div class="app-content">
-    <div class="section">
+
+<div class="app-content bg-light text-primary">
+    <div class="section bg-light text-primary">
 
         <!-- Banner opened -->
-        <div class="row">
+        <div class="row bg-light text-primary">
             <div class="col-xl-12">
-                <div class="banner banner-color mt-0">
+                <div class="banner banner-color mt-0 bg-light text-primary">
                     <div class="col-xl-2 col-lg-3 col-md-12">
-                        <img src="https://bullrun.live//Content/assets/images/svg/new_message.svg" alt="image" class="image">
+                        <!--<img src="https://bullrun.live//Content/assets/images/svg/new_message.svg" alt="image" class="image"> -->
                     </div>
                     <div class="page-content col-xl-7 col-lg-6 col-md-12">
-                        <h3 class="mb-1">User ID : <span class="currentuserid"></span></h3>
+                        <h3 class="mb-1 text-primary">User ID : <span class="currentuserid text-primary"></span></h3>
 
-                        <input class="currentuseridlink" type="text" id="myInput" style="opacity:0; height:0px;" />
-                        <input class="currentuseridlinknew" type="text" id="myInput1" style="opacity:0; height:0px;"/>
-
-
-                        <p class="mb-0 fs-16">Referral link : <span class="currentuseridlink"></span> &emsp; <span class="btn btn-warning" onclick="myFunction()"> <i class="fa fa-copy"></i></span></p>
-
-                        <p class="mb-0 fs-16">Trust Wallet Referral link : <span class="currentuseridlinknew"></span> &emsp; <span class="btn btn-warning" onclick="myFunction1()"> <i class="fa fa-copy"></i></span></p>
+                        <input class="currentuseridlink text-primary" type="text" id="myInput" style="opacity:0; height:0px;" />
+                        <input class="currentuseridlinknew text-primary" type="text" id="myInput1" style="opacity:0; height:0px;"/>
 
 
-                        <p class="mb-0 fs-16"><a class="ethaddress" href="" target="_blank">Your ETH address: <span class="currentaddress"></span> <i class="fa fa fa-external-link"></i></a></p>
+                        <p class="mb-0 fs-16 text-primary">Referral link : <span class="currentuseridlink text-primary"></span> &emsp; <span class="btn btn-warning" onclick="myFunction()"> <i class="fa fa-copy"></i></span></p>
+
+                        <p class="mb-0 fs-16 text-primary">Trust Wallet Referral link : <span class="currentuseridlinknew text-primary"></span> &emsp; <span class="btn btn-warning" onclick="myFunction1()"> <i class="fa fa-copy"></i></span></p>
+
+
+                        <p class="mb-0 fs-16 text-primary"><a class="ethaddress text-primary" href="" target="_blank">Your ETH address: <span class="currentaddress"></span> <i class="fa fa fa-external-link"></i></a></p>
                     </div>
                     
                     </div>
@@ -1175,7 +1033,7 @@ $(document).ready(function () {
         <!-- row opened -->
         <div class="row">
             <div class="col-xl-12 col-md-12 col-lg-12">
-                <div class="card bg-dark1">
+                <div class="card bg-light">
                     <div class="js-conveyor-example">
                         <ul class="news-crypto">
                             <li>
@@ -1186,8 +1044,8 @@ $(document).ready(function () {
                                                 <img src="https://bullrun.live/Content/assets/img/user.png" class="w-7 h-7" alt="">
                                             </div>
                                             <div class="ml-3">
-                                                <p class="text-white mb-1 fs-12">Total Users</p>
-                                                <div class="h5 m-0 fs-14 text-warning"><span class="TotalUsers"></span></div>
+                                                <p class="text-primary mb-1 fs-12">Total Users</p>
+                                                <div class="h5 m-0 fs-14 text-success"><span class="TotalUsers"></span></div>
                                             </div>
                                         </div>
                                     </div>
@@ -1201,8 +1059,8 @@ $(document).ready(function () {
                                                 <img src="https://bullrun.live/Content/assets/img/1.png" class="w-7 h-7" alt="">
                                             </div>
                                             <div class="ml-3">
-                                                <p class="text-white mb-1 fs-12">Pool 1 Users</p>
-                                                <div class="h5 m-0 fs-14 text-warning"><span class="Pool1count"></span></div>
+                                                <p class="text-primary mb-1 fs-12">Pool 1 Users</p>
+                                                <div class="h5 m-0 fs-14 text-success"><span class="Pool1count"></span></div>
                                             </div>
                                         </div>
                                     </div>
@@ -1216,8 +1074,8 @@ $(document).ready(function () {
                                                 <img src="https://bullrun.live/Content/assets/img/2.png" class="w-7 h-7" alt="">
                                             </div>
                                             <div class="ml-3">
-                                                <p class="text-white mb-1 fs-12">Pool 2 Users</p>
-                                                <div class="h5 m-0 fs-14 text-warning"><span class="Pool2count"></span></div>
+                                                <p class="text-primary mb-1 fs-12">Pool 2 Users</p>
+                                                <div class="h5 m-0 fs-14 text-success"><span class="Pool2count"></span></div>
                                             </div>
                                         </div>
                                     </div>
@@ -1231,8 +1089,8 @@ $(document).ready(function () {
                                                 <img src="https://bullrun.live/Content/assets/img/3.png" class="w-7 h-7" alt="">
                                             </div>
                                             <div class="ml-3">
-                                                <p class="text-white mb-1 fs-12">Pool 3 Users</p>
-                                                <div class="h5 m-0 fs-14 text-warning"><span class="Pool3count"></span></div>
+                                                <p class="text-primary mb-1 fs-12">Pool 3 Users</p>
+                                                <div class="h5 m-0 fs-14 text-success"><span class="Pool3count"></span></div>
                                             </div>
                                         </div>
 
@@ -1247,8 +1105,8 @@ $(document).ready(function () {
                                                 <img src="https://bullrun.live/Content/assets/img/4.png" class="w-7 h-7" alt="">
                                             </div>
                                             <div class="ml-3">
-                                                <p class="text-white mb-1 fs-12">Pool 4 Users</p>
-                                                <div class="h5 m-0 fs-14 text-warning"><span class="Pool4count"></span></div>
+                                                <p class="text-primary mb-1 fs-12">Pool 4 Users</p>
+                                                <div class="h5 m-0 fs-14 text-success"><span class="Pool4count"></span></div>
                                             </div>
                                         </div>
 
@@ -1263,8 +1121,8 @@ $(document).ready(function () {
                                                 <img src="https://bullrun.live/Content/assets/img/5.png" class="w-7 h-7" alt="">
                                             </div>
                                             <div class="ml-3">
-                                                <p class="text-white mb-1 fs-12">Pool 5 Users</p>
-                                                <div class="h5 m-0 fs-14 text-warning"><span class="Pool5count"></span></div>
+                                                <p class="text-primary mb-1 fs-12">Pool 5 Users</p>
+                                                <div class="h5 m-0 fs-14 text-success"><span class="Pool5count"></span></div>
                                             </div>
                                         </div>
 
@@ -1279,8 +1137,8 @@ $(document).ready(function () {
                                                 <img src="https://bullrun.live/Content/assets/img/6.png" class="w-7 h-7" alt="">
                                             </div>
                                             <div class="ml-3">
-                                                <p class="text-white mb-1 fs-12">Pool 6 Users</p>
-                                                <div class="h5 m-0 fs-14 text-warning"><span class="Pool6count"></span></div>
+                                                <p class="text-primary mb-1 fs-12">Pool 6 Users</p>
+                                                <div class="h5 m-0 fs-14 text-success"><span class="Pool6count"></span></div>
                                             </div>
                                         </div>
 
@@ -1295,59 +1153,17 @@ $(document).ready(function () {
                                                 <img src="https://bullrun.live/Content/assets/img/7.png" class="w-7 h-7" alt="">
                                             </div>
                                             <div class="ml-3">
-                                                <p class="text-white mb-1 fs-12">Pool 7 Users</p>
-                                                <div class="h5 m-0 fs-14 text-warning"><span class="Pool7count"></span></div>
+                                                <p class="text-primary mb-1 fs-12">Pool 7 Users</p>
+                                                <div class="h5 m-0 fs-14 text-success"><span class="Pool7count"></span></div>
                                             </div>
                                         </div>
 
                                     </div>
                                 </div>
                             </li>
-                            <li>
-                                <div>
-                                    <div class="row">
-                                        <div class=" d-flex">
-                                            <div class="">
-                                                <img src="https://bullrun.live/Content/assets/img/8.png" class="w-7 h-7" alt="">
-                                            </div>
-                                            <div class="ml-3">
-                                                <p class="text-white mb-1 fs-12">Pool 8 Users</p>
-                                                <div class="h5 m-0 fs-14 text-warning"><span class="Pool8count"></span></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div>
-                                    <div class="row">
-                                        <div class=" d-flex">
-                                            <div class="">
-                                                <img src="https://bullrun.live/Content/assets/img/9.png" class="w-7 h-7" alt="">
-                                            </div>
-                                            <div class="ml-3">
-                                                <p class="text-white mb-1 fs-12">Pool 9 Users</p>
-                                                <div class="h5 m-0 fs-14 text-warning"><span class="Pool9count"></span></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div>
-                                    <div class="row">
-                                        <div class=" d-flex">
-                                            <div class="">
-                                                <img src="https://bullrun.live/Content/assets/img/10.png" class="w-7 h-7" alt="">
-                                            </div>
-                                            <div class="ml-3">
-                                                <p class="text-white mb-1 fs-12">Pool 10 Users</p>
-                                                <div class="h5 m-0 fs-14 text-warning"><span class="Pool10count"></span></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
+                            
+                           
+                            
 
                         </ul>
                     </div>
@@ -1358,8 +1174,8 @@ $(document).ready(function () {
         <!-- row opened -->
         <div class="row">
             <div class="col-md-12 col-lg-6 col-xl-3">
-                <div class="card overflow-hidden bg-primary">
-                    <div class="card-body bg-gradient-success">
+                <div class="card overflow-hidden bg-light text-primary">
+                    <div class="card-body bg-gradient-light text-primary">
                         <div class="d-flex">
                             <div class="">
                                 <p class="mb-2 h6">Referral Earning ETH</p>
@@ -1367,7 +1183,7 @@ $(document).ready(function () {
                             </div>
                             <div class=" my-auto ml-auto">
                                 <div class="chart-wrapper text-center">
-                                    <img src="https://bullrun.live/Content/assets/img/d1.png" class="h-7" alt="">
+                                    <img src="https://res.cloudinary.com/forceex/image/upload/v1592161384/images_uc88uw.jpg" class="h-7" alt="">
                                 </div>
                             </div>
                         </div>
@@ -1377,8 +1193,8 @@ $(document).ready(function () {
 
             </div>
             <div class="col-md-12 col-lg-6 col-xl-3">
-                <div class="card overflow-hidden bg-gradient-secondary">
-                    <div class="card-body text-white">
+                <div class="card overflow-hidden bg-gradient-light text-primary">
+                    <div class="card-body text-primary">
 
                         <div class="d-flex">
                             <div class="">
@@ -1387,7 +1203,7 @@ $(document).ready(function () {
                             </div>
                             <div class=" my-auto ml-auto">
                                 <div class="chart-wrapper text-center">
-                                    <img src="https://bullrun.live/Content/assets/img/d2.png" class="h-7" alt="">
+                                    <img src="https://res.cloudinary.com/forceex/image/upload/v1592213278/512x512bb_maedea.jpg" class="h-7" alt="">
                                 </div>
                             </div>
                         </div>
@@ -1401,8 +1217,8 @@ $(document).ready(function () {
 
 
             <div class="col-md-12 col-lg-6 col-xl-3">
-                <div class="card overflow-hidden bg-teal">
-                    <div class="card-body text-white">
+                <div class="card overflow-hidden bg-light">
+                    <div class="card-body text-primary">
                         <div class="d-flex">
                             <div class="">
                                 <p class="mb-2 h6">Direct Team</p>
@@ -1410,7 +1226,7 @@ $(document).ready(function () {
                             </div>
                             <div class=" my-auto ml-auto">
                                 <div class="chart-wrapper text-center">
-                                    <img src="https://bullrun.live/Content/assets/img/d4.png" class="h-7" alt="">
+                                    <img src="https://res.cloudinary.com/forceex/image/upload/v1592159802/377-3779090_employee-referral-icon-png-png-download-referral-png_pgti2e.png" class="h-7" alt="">
                                 </div>
                             </div>
                         </div>
@@ -1419,9 +1235,9 @@ $(document).ready(function () {
                 </div>
             </div>
             <div class="col-md-12 col-lg-6 col-xl-3">
-                <div class="card overflow-hidden" style="background-color:#004172;color:#fff;">
+                <div class="card overflow-hidden bg-light text-primary">
 
-                    <div class="card-body text-white">
+                    <div class="card-body text-primary bg-light">
                         <div class="d-flex">
                             <div class="">
                                 <p class="mb-2 h6">Indirect Team</p>
@@ -1430,7 +1246,7 @@ $(document).ready(function () {
 
                             <div class=" my-auto ml-auto">
                                 <div class="chart-wrapper text-center">
-                                    <img src="https://bullrun.live/Content/assets/img/d5.png" class="h-7" alt="">
+                                    <img src="https://res.cloudinary.com/forceex/image/upload/v1592213293/unnamed_2_hcejio.jpg" class="h-7" alt="">
                                 </div>
                             </div>
 
@@ -1464,205 +1280,152 @@ $(document).ready(function () {
         <!-- row opened -->
         <div class="row ">
             <div class="col-md-3 col-xs-6">
-                <div class="card text-center overflow-hidden">
+                <div class="card text-center overflow-hidden bg-primary text-white">
                     <div class="pool1status">
                         <div class="card-status"></div>
                         <div class="ribbon ribbon-top-left"></div>
                     </div>
                     <div class="card-header text-center mx-auto">
-                        <h2 class="card-title font-weight-bold">AutoPool 1</h2>
+                        <h2 class="card-title font-weight-bold text-white">AutoPool 1</h2>
                     </div>
                     <div class="card-body">
-                        <h1 class="pricing-card-title mb-5">0.1 ETH</h1>
-                        <p class="mb-5">Globally <strong>2</strong> people pays <br /> <strong>0.1</strong> ETH each</p>
-                        <p class="mb-5">No Referral necessary</p>
-                        <button type="button" class="btn btn-primary pool1pay">Enter</button>
-                        <p class="pool1transaction btn btn-primary disabled">Not Eligible</p>
+                        <h1 class="pricing-card-title mb-5">0.05 ETH</h1>
+                        <p class="mb-5"> <strong>2</strong> people pay <br /> <strong>0.05</strong> ETH each</p>
+                        <p class="mb-5">You don't need referrals to earn</p>
+                        <button type="button" class="btn btn-light text-primary pool1pay">Enter</button>
+                        <p class="pool1transaction btn btn-light text-primary disabled">Not Eligible</p>
                     </div>
                 </div>
             </div>
             <div class="col-md-3 col-lg-3  col-xs-6">
-                <div class="card text-center overflow-hidden">
+                <div class="card text-center overflow-hidden bg-primary text-white">
                     <div class="pool2status">
                         <div class="card-status"></div>
                         <div class="ribbon ribbon-top-left"><span class="bg-danger">New</span></div>
                     </div>
                     <div class="card-header text-center mx-auto">
-                        <h3 class="card-title font-weight-bold">AutoPool 2</h3>
+                        <h3 class="card-title font-weight-bold text-white">AutoPool 2</h3>
                     </div>
                     <div class="card-body">
-                        <h1 class="pricing-card-title mb-5">0.2 ETH</h1>
-                        <p class="mb-5">Globally <strong>3</strong> people pays  <br /><strong>0.2</strong> ETH each</p>
-                        <p class="mb-5">No Referral necessary</p>
-                        <button type="button" class="btn btn-danger pool2pay">Enter</button>
-                        <p class="pool2transaction btn btn-primary disabled">Not Eligible</p>
+                        <h1 class="pricing-card-title mb-5">0.1 ETH</h1>
+                        <p class="mb-5"> <strong>3</strong> people pay  <br /><strong>0.1</strong> ETH each</p>
+                        <p class="mb-5">You don't need referrals to earn</p>
+                        <button type="button" class="btn btn-light text-primary pool2pay">Enter</button>
+                        <p class="pool2transaction btn btn-light text-primary disabled">Not Eligible</p>
                     </div>
                 </div>
             </div>
             <div class="col-md-3 col-lg-3  col-xs-6">
-                <div class="card text-center overflow-hidden">
+                <div class="card text-center overflow-hidden bg-primary text-white">
                     <div class="pool3status">
                         <div class="card-status"></div>
                         <div class="ribbon ribbon-top-left"><span class="bg-danger">New</span></div>
                     </div>
                     <div class="card-header text-center mx-auto">
-                        <h3 class="card-title font-weight-bold">AutoPool 3</h3>
+                        <h3 class="card-title font-weight-bold text-white">AutoPool 3</h3>
                     </div>
                     <div class="card-body">
-                        <h1 class="pricing-card-title mb-5">0.5 ETH</h1>
-                        <p class="mb-5">Globally <strong>3</strong> people pays  <br /><strong>0.5</strong> ETH each</p>
-                        <p class="mb-5">No Referral necessary</p>
-                        <button type="button" class="btn btn-success pool3pay">Enter</button>
-                        <p class="pool3transaction btn btn-primary disabled">Not Eligible</p>
+                        <h1 class="pricing-card-title mb-5">0.2 ETH</h1>
+                        <p class="mb-5"><strong>3</strong> people pay  <br /><strong>0.2</strong> ETH each</p>
+                        <p class="mb-5">You don't need referrals to earn</p>
+                        <button type="button" class="btn btn-light text-primary pool3pay">Enter</button>
+                        <p class="pool3transaction btn btn-light text-primary disabled">Not Eligible</p>
                     </div>
                 </div>
             </div>
 
             <div class="col-md-3 col-lg-3  col-xs-6">
-                <div class="card text-center overflow-hidden">
+                <div class="card text-center overflow-hidden bg-primary text-white">
                     <div class="pool4status">
                         <div class="card-status"></div>
                         <div class="ribbon ribbon-top-left "><span class="bg-danger">New</span></div>
                     </div>
                     <div class="card-header text-center mx-auto">
-                        <h3 class="card-title font-weight-bold">AutoPool 4</h3>
+                        <h3 class="card-title font-weight-bold text-white">AutoPool 4</h3>
                     </div>
                     <div class="card-body">
-                        <h1 class="pricing-card-title mb-5">1 ETH</h1>
-                        <p class="mb-5">Globally <strong>3</strong> people pays  <br /><strong>1</strong> ETH each</p>
-                        <p class="mb-5">No Referral necessary</p>
-                        <button type="button" class="btn btn-success pool4pay">Enter</button>
-                        <p class="pool4transaction btn btn-primary disabled">Not Eligible</p>
+                        <h1 class="pricing-card-title mb-5">0.5 ETH</h1>
+                        <p class="mb-5"><strong>3</strong> people pay <br /><strong>0.5</strong> ETH each</p>
+                        <p class="mb-5">You don't need referrals to earn</p>
+                        <button type="button" class="btn btn-light text-primary pool4pay">Enter</button>
+                        <p class="pool4transaction btn btn-light text-primary disabled">Not Eligible</p>
                     </div>
                 </div>
             </div>
 
             <div class="col-md-3 col-lg-3  col-xs-6">
-                <div class="card text-center overflow-hidden">
+                <div class="card text-center overflow-hidden bg-primary text-white">
                     <div class="pool5status">
                         <div class="card-status"></div>
                         <div class="ribbon ribbon-top-left "><span class="bg-danger">New</span></div>
                     </div>
                     <div class="card-header text-center mx-auto">
-                        <h3 class="card-title font-weight-bold">AutoPool 5</h3>
+                        <h3 class="card-title font-weight-bold text-white">AutoPool 5</h3>
                     </div>
                     <div class="card-body">
-                        <h1 class="pricing-card-title mb-5">2 ETH</h1>
-                        <p class="mb-5">Globally <strong>3</strong> people pays  <br /><strong>2</strong> ETH each</p>
-                        <p class="mb-5">No Referral necessary</p>
-                        <button type="button" class="btn btn-success pool5pay">Enter</button>
-                        <p class="pool5transaction btn btn-primary disabled">Not Eligible</p>
+                        <h1 class="pricing-card-title mb-5">1 ETH</h1>
+                        <p class="mb-5"> <strong>3</strong> people pay  <br /><strong>1</strong> ETH each</p>
+                        <p class="mb-5">You don't need referrals to earn</p>
+                        <button type="button" class="btn btn-light text-primary pool5pay">Enter</button>
+                        <p class="pool5transaction btn btn-light text-primary disabled">Not Eligible</p>
                     </div>
                 </div>
             </div>
 
             <div class="col-md-3 col-lg-3  col-xs-6">
-                <div class="card text-center overflow-hidden">
+                <div class="card text-center overflow-hidden bg-primary text-white">
                     <div class="pool6status">
                         <div class="card-status"></div>
                         <div class="ribbon ribbon-top-left"><span class="bg-danger">New</span></div>
                     </div>
                     <div class="card-header text-center mx-auto">
-                        <h3 class="card-title font-weight-bold">AutoPool 6</h3>
+                        <h3 class="card-title font-weight-bold text-white">AutoPool 6</h3>
                     </div>
                     <div class="card-body">
-                        <h1 class="pricing-card-title mb-5">5 ETH</h1>
-                        <p class="mb-5">Globally <strong>3</strong> people pays  <br /><strong>5</strong> ETH each</p>
-                        <p class="mb-5">No Referral necessary</p>
-                        <button type="button" class="btn btn-success pool6pay">Enter</button>
-                        <p class="pool6transaction btn btn-primary disabled">Not Eligible</p>
+                        <h1 class="pricing-card-title mb-5">2 ETH</h1>
+                        <p class="mb-5"><strong>3</strong> people pay  <br /><strong>2</strong> ETH each</p>
+                        <p class="mb-5">You don't need referrals to earn</p>
+                        <button type="button" class="btn btn-light text-primary pool6pay">Enter</button>
+                        <p class="pool6transaction btn btn-light text-primary disabled">Not Eligible</p>
                     </div>
                 </div>
             </div>
 
             <div class="col-md-3 col-lg-3  col-xs-6">
-                <div class="card text-center overflow-hidden">
+                <div class="card text-center bg-primary text-white overflow-hidden">
                     <div class="pool7status">
                         <div class="card-status"></div>
                         <div class="ribbon ribbon-top-left"><span class="bg-danger">New</span></div>
                     </div>
                     <div class="card-header text-center mx-auto">
-                        <h3 class="card-title font-weight-bold">AutoPool 7</h3>
+                        <h3 class="card-title font-weight-bold text-white">AutoPool 7</h3>
                     </div>
                     <div class="card-body">
-                        <h1 class="pricing-card-title mb-5">10 ETH</h1>
-                        <p class="mb-5">Globally <strong>3</strong> people pays  <br /><strong>10</strong> ETH each</p>
-                        <p class="mb-5">No Referral necessary</p>
-                        <button type="button" class="btn btn-success pool7pay">Enter</button>
-                        <p class="pool7transaction btn btn-primary disabled">Not Eligible</p>
+                        <h1 class="pricing-card-title mb-5">5 ETH</h1>
+                        <p class="mb-5"><strong>3</strong> people pay  <br /><strong>5</strong> ETH each</p>
+                        <p class="mb-5">You don't need referrals to earn</p>
+                        <button type="button" class="btn btn-light text-primary pool7pay">Enter</button>
+                        <p class="pool7transaction btn btn-light text-primary disabled">Not Eligible</p>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-3 col-lg-3  col-xs-6">
-                <div class="card text-center overflow-hidden">
-                    <div class="pool8status">
-                        <div class="card-status"></div>
-                        <div class="ribbon ribbon-top-left"><span class="bg-danger">New</span></div>
-                    </div>
-                    <div class="card-header text-center mx-auto">
-                        <h3 class="card-title font-weight-bold">AutoPool 8</h3>
-                    </div>
-                    <div class="card-body">
-                        <h1 class="pricing-card-title mb-5">20 ETH</h1>
-                        <p class="mb-5">Globally <strong>3</strong> people pays  <br /><strong>20</strong> ETH each</p>
-                        <p class="mb-5">No Referral necessary</p>
-                        <button type="button" class="btn btn-success pool8pay">Enter</button>
-                        <p class="pool8transaction btn btn-primary disabled">Not Eligible</p>
-                    </div>
-                </div>
-            </div>
+            
 
-            <div class="offset-lg-3 col-md-3 col-lg-3  col-xs-6">
-                <div class="card text-center overflow-hidden">
-                    <div class="pool9status">
-                        <div class="card-status"></div>
-                        <div class="ribbon ribbon-top-left"><span class="bg-danger">New</span></div>
-                    </div>
-                    <div class="card-header text-center mx-auto">
-                        <h3 class="card-title font-weight-bold">AutoPool 9</h3>
-                    </div>
-                    <div class="card-body">
-                        <h1 class="pricing-card-title mb-5">50 ETH</h1>
-                        <p class="mb-5">Globally <strong>3</strong> people pays  <br /><strong>50</strong> ETH each</p>
-                        <p class="mb-5">No Referral necessary</p>
-                        <button type="button" class="btn btn-success pool9pay">Enter</button>
-                        <p class="pool9transaction btn btn-primary disabled">Not Eligible</p>
-                    </div>
-                </div>
-            </div>
+           
 
-            <div class="col-md-3 col-lg-3  col-xs-6">
-                <div class="card text-center overflow-hidden">
-                    <div class="pool10status">
-                        <div class="card-status"></div>
-                        <div class="ribbon ribbon-top-left"><span class="bg-danger">New</span></div>
-                    </div>
-                    <div class="card-header text-center mx-auto">
-                        <h3 class="card-title font-weight-bold">AutoPool 10</h3>
-                    </div>
-                    <div class="card-body">
-                        <h1 class="pricing-card-title mb-5">100 ETH</h1>
-                        <p class="mb-5">Globally <strong>3</strong> people pays  <br /><strong>100</strong> ETH each</p>
-                        <p class="mb-5">No Referral necessary</p>
-                        <button type="button" class="btn btn-success pool10pay">Enter</button>
-                        <p class="pool10transaction btn btn-primary disabled">Not Eligible</p>
-                    </div>
-                </div>
-            </div>
+          
         </div>
         <!-- row closed -->
 
     </div>
 </div>
-
-
 <style>
-    .pool1pay, .pool2pay, .pool3pay, .pool4pay, .pool5pay, .pool6pay, .pool7pay, .pool8pay, .pool9pay, .pool10pay {
+    .pool1pay, .pool2pay, .pool3pay, .pool4pay, .pool5pay, .pool6pay, .pool7pay {
         display: none
     }
 
-    .pool1status, .pool2status, .pool3status, .pool4status, .pool5status, .pool6status, .pool7status, .pool8status, .pool9status, .pool10status {
+    .pool1status, .pool2status, .pool3status, .pool4status, .pool5status, .pool6status, .pool7status  {
         display: none
     }
 </style>
