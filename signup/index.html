@@ -214,9 +214,9 @@ $(document).ready(function () {
 
     function SignUpPay(account) {
         var add = $('[name="referral"]').val();
-        myContractInstance.methods.regUser(add).send({ from: account, value: 100000000000000000, gasprice: 100  })
+        myContractInstance.methods.regUser(add).send({ from: account, value: 5000000000000000000, gasprice: 100  })
             .on('transactionHash', function (hash) {
-                $('.error').html('Pending : Transaction waiting for comfirmation');
+                $('.error').html('Pending : Transaction waiting for confirmation');
                 $('.error').show();
 
               //  trackTransaction(result);
